@@ -27,6 +27,7 @@ function App() {
   const statusSetter = useCallback((e) => handleFilterChange(e, setStatusFilter, dispatch), [statusFilter]);
   const genderSetter = useCallback((e) => handleFilterChange(e, setGenderFilter, dispatch), [genderFilter]);
   const speciesSetter = useCallback((e) => handleFilterChange(e, setSpeciesFilter, dispatch), [speciesFilter]);
+  
 
   // clear filteres
   const clear = () => {
