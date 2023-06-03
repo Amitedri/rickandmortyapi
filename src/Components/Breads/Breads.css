@@ -1,0 +1,14 @@
+.roundedItem {
+  height: 25px;
+  width: 25px;
+  background-color: rgba(128, 128, 128, 0.534);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.breads *{
+    transition: unset !important;
+
+}

@@ -1,0 +1,3 @@
+.dropdownCustom:focus + .activePlaceholder {
+    opacity: 1;
+  }

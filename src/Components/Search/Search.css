@@ -1,0 +1,36 @@
+
+
+.activePlaceholder {
+  position: absolute;
+  left: 25px;
+  top:-15px;
+  height: 20px;
+  opacity: 0;
+}
+.search:focus + .activePlaceholder{
+  opacity: 1;
+  color: green;
+}
+.searchWrapper:focus-within + .search {
+  border:2px solid green;
+}
+.search {
+  border: none;
+}
+.search:focus::placeholder {
+  opacity: 0;
+  outline: none !important;
+  border: 0;
+}
+
+
+.nores{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.search::placeholder{
+  color:green
+}
