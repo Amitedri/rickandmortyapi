@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Modal.css";
 import { useSelector } from "react-redux";
-import { getExtraDetails } from "../../Utils";
+import {getExtraDetails } from "../../Utils";
 
 const Modal = () => {
   const currentChar = useSelector((state) => state.user.currentChar);
@@ -21,7 +21,7 @@ const Modal = () => {
     });
   }, [currentChar]);
 
-
+  
   useEffect(() => {
     if (!localState.hasOwnProperty("image")) {
       return;
@@ -32,6 +32,7 @@ const Modal = () => {
     document.addEventListener("click",close);
     return () => {
     document.removeEventListener("click",close);
+
     };
   }, [localState]);
 
@@ -44,7 +45,7 @@ const Modal = () => {
       style={{ zIndex: "9999" }}
     >
       <div
-        className={`ModalContainer d-flex flex-column justify-content-start align-items-start rounded-2 mt-1 btnShadow slide-bottom`}
+        className={`toastContainer d-flex flex-column justify-content-start align-items-start rounded-2 mt-1 btnShadow slide-bottom`}
       >
         <img
           src={localState.image}
