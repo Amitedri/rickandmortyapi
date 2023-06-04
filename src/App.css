@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-logo {
@@ -44,7 +45,27 @@
 }
 
 @media screen and (max-width: 600px) {
-  .tableWrapper{
+  .App {
+    height: unset
   }
   
+}
+
+.text-container {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.greenText{
+  text-shadow: 0px 0px 4px #32CE10;
+}
+.tryBtn{
+  box-shadow: 2px 1px 25px 15px rgba(12,255,67,0.75);
+-webkit-box-shadow: 2px 1px 25px 15px rgba(12,255,67,0.75);
+-moz-box-shadow: 2px 1px 25px 15px rgba(12,255,67,0.75);
+}
+.convert{
+  box-shadow: 2px 1px 25px 15px rgba(240, 240, 240, 0.75);
+-webkit-box-shadow: 2px 1px 25px 15px (240, 240, 240, 0.75);
+-moz-box-shadow: 2px 1px 25px 15px (240, 240, 240, 0.75);
 }

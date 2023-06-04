@@ -31,3 +31,12 @@ export const setSpeciesFilter = (dispatch, value) => {
   dispatch(utils.setSpeciesFilter(value));
   return;
 };
+
+export const setView = (dispatch, value) => {
+  dispatch(utils.setView(value));
+  return;
+};
+export const clearFilters = (dispatch, value) => {
+  dispatch(utils.clearFilters(value));
+  return;
+};

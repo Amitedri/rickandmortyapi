@@ -36,7 +36,7 @@ const Breads = () => {
   if (currentIndex.value < 5) {
     const last = list[list.length - 1];
     return (
-      <div className="col-12 d-flex flex-row justify-content-center align-items-center breads smFont">
+      <div className="col-12 d-flex flex-row justify-content-center align-items-center breads smFont bg-dark text-white">
         <span className="m-2 hoverSoft" onClick={handlePrev}>
           {"<"}
         </span>
@@ -50,7 +50,7 @@ const Breads = () => {
             </span>
           );
         })}
-        {last && (
+        {last != false && last.value !== 1 && (
           <span className={`hoverSoft ${handleItemClass(last, currentIndex)}`} onClick={() => handlePageChange(last)}>
             ... {last.value}
           </span>
@@ -65,7 +65,7 @@ const Breads = () => {
   // render as user progress
 
   return (
-    <div className="col-12 d-flex flex-row justify-content-center align-items-center breads smFont">
+    <div className="col-12 d-flex flex-row justify-content-center bg-dark align-items-center breads smFont  text-white">
       <span className="m-2 hoverSoft" onClick={handlePrev}>
         {"<"}
       </span>

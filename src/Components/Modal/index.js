@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import "./Modal.css";
-import { useSelector } from "react-redux";
-import {getExtraDetails } from "../../Utils";
+import { useDispatch, useSelector } from "react-redux";
+import { getExtraDetails } from "../../Utils";
+import { setCurrentChar } from "../../Redux/Utils";
 
 const Modal = () => {
   const currentChar = useSelector((state) => state.user.currentChar);
 
   const [localState, setLocalState] = useState({});
-
+  const dispatch = useDispatch();
   useEffect(() => {
+    if (!currentChar.hasOwnProperty("image")) {
+      return;
+    }
     getExtraDetails(currentChar).then((res) => {
       console.log(res);
       setLocalState((prev) => {
@@ -21,18 +25,17 @@ const Modal = () => {
     });
   }, [currentChar]);
 
-  
   useEffect(() => {
     if (!localState.hasOwnProperty("image")) {
       return;
     }
-    const close = function(e){
+    const close = function (e) {
       setLocalState({});
-    }
-    document.addEventListener("click",close);
+      setCurrentChar(dispatch, {});
+    };
+    document.addEventListener("click", close);
     return () => {
-    document.removeEventListener("click",close);
-
+      document.removeEventListener("click", close);
     };
   }, [localState]);
 
@@ -55,7 +58,7 @@ const Modal = () => {
           onClick={() => setLocalState("")}
         />
         <div className="col-12 d-flex flex-column justify-content-start align-items-start p-3">
-          <span className="fw-bolder">{localState.name}</span>
+          <span className="fw-bolder greenText">{localState.name}</span>
           {localState.episode.map((el) => {
             return (
               <div className="col-10 d-flex flex-row justify-content-start align-items-center">

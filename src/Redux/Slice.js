@@ -10,9 +10,10 @@ export const userSlice = createSlice({
     currentIndex: { value: 1, url: "https://rickandmortyapi.com/api/character/?page=1" },
     statusFilter: "",
     genderFilter: "",
-    speciesFilter:"",
+    speciesFilter: "",
     termFilter: "",
-    currentChar:{}
+    currentChar: {},
+    view: "table",
   },
   reducers: {
     setCharactersList: (state, action) => {
@@ -36,11 +37,31 @@ export const userSlice = createSlice({
     setSpeciesFilter: (state, action) => {
       state.speciesFilter = action.payload;
     },
+    setView: (state, action) => {
+      state.view = action.payload;
+    },
+    clearFilters: (state, action) => {
+      state.termFilter = "";
+      state.statusFilter = "";
+      state.genderFilter = "";
+      state.speciesFilter = "";
+      state.view = "table"
+    },
   },
 });
 
 // this is for dispatch
-export const { setCharactersList, setCurrentIndex,setGenderFilter,setStatusFilter,setTermFilter,setCurrentChar,setSpeciesFilter } = userSlice.actions;
+export const {
+  setCharactersList,
+  setCurrentIndex,
+  setGenderFilter,
+  setStatusFilter,
+  setTermFilter,
+  setCurrentChar,
+  setSpeciesFilter,
+  setView,
+  clearFilters
+} = userSlice.actions;
 
 // this is for configureStore
 export default userSlice.reducer;

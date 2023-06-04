@@ -1,6 +1,8 @@
 import querystring from "querystring";
 import axios from "axios";
-import { setCharactersList } from "../Redux/Utils";
+import { setCharactersList, setStatusFilter, setGenderFilter, setSpeciesFilter, setView } from "../Redux/Utils";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 export const handleFilterChange = (e, setter, dispatch) => {
   setter(dispatch, e.target.value);
@@ -196,4 +198,32 @@ export const getExtraDetails = async (currentChar) => {
     }
   }
   return null;
+};
+
+export function setRandomPayload(data, dispatch) {
+  const payload = {};
+
+  for (const key in data) {
+    if (Array.isArray(data[key])) {
+      const array = data[key];
+      const randomIndex = Math.floor(Math.random() * array.length);
+      payload[key] = array[randomIndex];
+    }
+  }
+  console.log(payload);
+  setGenderFilter(dispatch, payload.genders);
+  setSpeciesFilter(dispatch, payload.species);
+  setStatusFilter(dispatch, payload.statuses);
+}
+
+
+export const exportToXLSX = (data) => {
+  const worksheet = XLSX.utils.json_to_sheet(data);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet 1");
+  const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+  const excelBlob = new Blob([excelBuffer], {
+    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  });
+  saveAs(excelBlob, "data.xlsx");
 };
