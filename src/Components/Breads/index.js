@@ -50,7 +50,7 @@ const Breads = () => {
             </span>
           );
         })}
-        {last != false && last.value > currentIndex.value && (
+        {last != false && last.value <= currentIndex.value && (
           <span className={`hoverSoft ${handleItemClass(last, currentIndex)}`} onClick={() => handlePageChange(last)}>
             ... {last.value}
           </span>
