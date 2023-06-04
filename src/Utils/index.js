@@ -112,7 +112,7 @@ export const handleFilters = async ({ genderFilter, statusFilter, termFilter, sp
   query.page = 1;
   if (!genderFilter && !statusFilter && !termFilter && !speciesFilter) {
     console.log("none", url);
-    setUrl("https://rickandmortyapi.com/api/character/?");
+    setUrl("https://rickandmortyapi.com/api/character/?page=1");
     return;
   }
   const qs = querystring.stringify(query);
