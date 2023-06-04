@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { genders, species, statuses, views } from "../../constants";
 import { exportToXLSX, getRandomPayload, setRandomPayload } from "../../Utils";
-import { setGenderFilter, setSpeciesFilter, setStatusFilter } from "../../Redux/Utils";
+import { setGenderFilter, setSpeciesFilter, setStatusFilter, setTermFilter } from "../../Redux/Utils";
 import { useDispatch, useSelector } from "react-redux";
 import PDFDocument from "../PDFDocument";
 import { PDFDownloadLink } from "@react-pdf/renderer";
@@ -29,6 +29,8 @@ const TryMe = () => {
 
   const handleRandom = () => {
     setRandomPayload(data, dispatch);
+    setTermFilter(dispatch,"")
+
   };
   const handleExport = () => {
     exportToXLSX(chracterslist.results);

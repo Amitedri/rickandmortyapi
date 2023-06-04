@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import "./Search.css";
 import { debounce, debounceFunc } from "../../Utils";
 import { useDispatch, useSelector } from "react-redux";
-import { setTermFilter } from "../../Redux/Utils";
+import { setCurrentIndex, setTermFilter } from "../../Redux/Utils";
 const Search = () => {
   const [termFilterLocal, setLocalTermFilter] = useState("");
   const termFilter = useSelector((state) => state.user.termFilter);
+  const currentIndex = useSelector((state) => state.user.currentIndex);
+
   const dispatch = useDispatch();
   const debounceSpeed = 750;
 
@@ -23,6 +25,13 @@ const Search = () => {
       debounceSearch.cancel();
     };
   }, [termFilterLocal]);
+
+  useEffect(() => {
+    if(currentIndex.value >1){
+      setCurrentIndex(dispatch,{value:1,url:""})
+    }
+  }, [termFilter])
+  
 
   return (
     <div
