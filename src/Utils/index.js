@@ -167,14 +167,14 @@ export const getExtraDetails = async (currentChar) => {
     return null;
   }
   const episodes = currentChar.episode;
-  console.log();
   let first = episodes[0].split("/");
   first = first[first.length - 1];
   const hasAnotherEpisode = episodes.length > 1 ? episodes[episodes.length - 1] : "";
-  const last = hasAnotherEpisode ? hasAnotherEpisode[hasAnotherEpisode.length - 1] : "";
+  let last = hasAnotherEpisode ? hasAnotherEpisode[hasAnotherEpisode.length - 1] : "";
+  last = hasAnotherEpisode.split("/");
+  last = last[last.length - 1];
 
   const url = `https://rickandmortyapi.com/api/episode/${first},${last}`;
-  console.log("url", url);
 
   const request = await axios.get(url).catch((err) => {
     // handle errors with modal
